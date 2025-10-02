@@ -10,27 +10,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * TaskAdapter - RecyclerView Adapter for displaying tasks
- * Handles the display and interaction of task items in the RecyclerView
- */
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder> {
 
     private List<Task> taskList;
     private OnTaskClickListener listener;
 
-    /**
-     * Interface for handling task click events
-     */
     public interface OnTaskClickListener {
         void onTaskClick(Task task);
         void onTaskLongClick(Task task);
     }
 
-    /**
-     * Constructor
-     * @param listener Click listener for task interactions
-     */
     public TaskAdapter(OnTaskClickListener listener) {
         this.taskList = new ArrayList<>();
         this.listener = listener;
@@ -39,7 +28,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
     @NonNull
     @Override
     public TaskViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // Inflate the task item layout
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_task, parent, false);
         return new TaskViewHolder(view);
@@ -47,7 +35,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull TaskViewHolder holder, int position) {
-        // Bind task data to the view holder
         Task task = taskList.get(position);
         holder.bind(task);
     }
@@ -57,28 +44,15 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         return taskList.size();
     }
 
-    /**
-     * Update the task list and refresh the RecyclerView
-     * @param tasks New list of tasks
-     */
     public void setTasks(List<Task> tasks) {
         this.taskList = tasks;
         notifyDataSetChanged();
     }
 
-    /**
-     * Get task at specific position
-     * @param position Position in the list
-     * @return Task object at that position
-     */
     public Task getTaskAt(int position) {
         return taskList.get(position);
     }
 
-    /**
-     * ViewHolder class for task items
-     * Holds references to views in each task item
-     */
     class TaskViewHolder extends RecyclerView.ViewHolder {
         private TextView tvDescription;
         private TextView tvPriority;
@@ -87,12 +61,10 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         public TaskViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            // Initialize views
             tvDescription = itemView.findViewById(R.id.tv_description);
             tvPriority = itemView.findViewById(R.id.tv_priority);
             cardView = itemView.findViewById(R.id.card_view);
 
-            // Setup click listener for normal click (to edit task)
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -103,7 +75,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
                 }
             });
 
-            // Setup long click listener (alternative delete method)
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
@@ -117,18 +88,9 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
             });
         }
 
-        /**
-         * Bind task data to views
-         * @param task Task object to display
-         */
         public void bind(Task task) {
-            // Set task description
             tvDescription.setText(task.getDescription());
-
-            // Set priority text
             tvPriority.setText(task.getPriority());
-
-            // Set color based on priority
             int color;
             switch (task.getPriority()) {
                 case "High":
@@ -144,11 +106,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
                     color = Color.GRAY;
                     break;
             }
-
-            // Apply color to priority text
             tvPriority.setTextColor(color);
-
-            // Set card background to white
             cardView.setCardBackgroundColor(Color.parseColor("#FFFFFF"));
         }
     }

@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "201434750327",
+    "firebase_url": "https://c013todolist-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "c013todolist",
     "storage_bucket": "c013todolist.firebasestorage.app"
   },
@@ -21,10 +22,6 @@
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": []
-        },
-        "database_service": {
-          "status": 1,
-          "url": "https://c013todolist-default-rtdb.asia-southeast1.firebaseio.app"
         }
       }
     }
