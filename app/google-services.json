@@ -1,0 +1,33 @@
+{
+  "project_info": {
+    "project_number": "201434750327",
+    "project_id": "c013todolist",
+    "storage_bucket": "c013todolist.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:201434750327:android:1595e6417bb3286f6fd572",
+        "android_client_info": {
+          "package_name": "com.c013.ashmit_mad_assignment2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwRP8ehTmdsj5217iC4fJR96eHyFjLRbU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        },
+        "database_service": {
+          "status": 1,
+          "url": "https://c013todolist-default-rtdb.asia-southeast1.firebaseio.app"
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
